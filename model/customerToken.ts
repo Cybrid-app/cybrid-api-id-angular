@@ -9,25 +9,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ApplicationIdpModel } from './application';
 
 
-export interface ApplicationListIdpModel { 
+export interface CustomerTokenIdpModel { 
     /**
-     * The total number of records available.
+     * The JWT access token for the customer.
      */
-    total: string;
-    /**
-     * The page index.
-     */
-    page: string;
-    /**
-     * The number of records per page returned.
-     */
-    per_page: string;
-    /**
-     * Array of applications
-     */
-    objects: Array<ApplicationIdpModel>;
+    access_token?: string;
 }
 

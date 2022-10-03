@@ -9,25 +9,30 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ApplicationIdpModel } from './application';
 
 
-export interface ApplicationListIdpModel { 
+export interface PostCustomerTokenIdpModel { 
     /**
-     * The total number of records available.
+     * Customer guid the access token is being generated for.
      */
-    total: string;
+    customer_guid: string;
     /**
-     * The page index.
+     * List of the scopes requested for the access token.
      */
-    page: string;
-    /**
-     * The number of records per page returned.
-     */
-    per_page: string;
-    /**
-     * Array of applications
-     */
-    objects: Array<ApplicationIdpModel>;
+    scopes: Set<PostCustomerTokenIdpModel.ScopesEnum>;
 }
+export namespace PostCustomerTokenIdpModel {
+    export type ScopesEnum = 'customers:read' | 'accounts:read' | 'accounts:execute' | 'prices:read' | 'quotes:read' | 'quotes:execute' | 'trades:read' | 'rewards:read';
+    export const ScopesEnum = {
+        Customersread: 'customers:read' as ScopesEnum,
+        Accountsread: 'accounts:read' as ScopesEnum,
+        Accountsexecute: 'accounts:execute' as ScopesEnum,
+        Pricesread: 'prices:read' as ScopesEnum,
+        Quotesread: 'quotes:read' as ScopesEnum,
+        Quotesexecute: 'quotes:execute' as ScopesEnum,
+        Tradesread: 'trades:read' as ScopesEnum,
+        Rewardsread: 'rewards:read' as ScopesEnum
+    };
+}
+
 
