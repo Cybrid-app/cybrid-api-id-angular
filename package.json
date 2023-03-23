@@ -1,6 +1,6 @@
 {
   "name": "@cybrid/cybrid-api-id-angular",
-  "version": "0.67.4",
+  "version": "0.67.5",
   "description": "View our documentation at https://github.com/Cybrid-app/cybrid-api-id-angular/",
   "author": "Cybrid",
   "keywords": [
@@ -21,9 +21,9 @@
     "@angular/compiler-cli": "^14.0.1",
     "@angular/core": "^14.0.1",
     "@angular/platform-browser": "^14.0.1",
-    "ng-packagr": "14.0.2",
+    "ng-packagr": "15.2.2",
     "reflect-metadata": "^0.1.3",
     "rxjs": "^7.4.0",
-    "typescript": "4.7.3",
+    "typescript": "4.8.4",
     "zone.js": "^0.11.4"
   }}
