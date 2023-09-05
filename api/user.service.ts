@@ -19,9 +19,9 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
-import { CustomerTokenIdpModel } from '../model/customerToken';
+import { PostUserIdpModel } from '../model/postUser';
 // @ts-ignore
-import { PostCustomerTokenIdpModel } from '../model/postCustomerToken';
+import { UserIdpModel } from '../model/user';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -32,7 +32,7 @@ import { Configuration }                                     from '../configurat
 @Injectable({
   providedIn: 'root'
 })
-export class CustomerTokensService {
+export class UserService {
 
     protected basePath = 'https://id.sandbox.cybrid.app';
     public defaultHeaders = new HttpHeaders();
@@ -89,18 +89,18 @@ export class CustomerTokensService {
     }
 
     /**
-     * Create customer access token
-     * Creates a customer JWT access token.  Required scopes: **customers:write** and **customers:read**
-     * @param postCustomerTokenIdpModel 
+     * Create user
+     * Creates a user.  
+     * @param postUserIdpModel 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public createCustomerToken(postCustomerTokenIdpModel: PostCustomerTokenIdpModel, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<CustomerTokenIdpModel>;
-    public createCustomerToken(postCustomerTokenIdpModel: PostCustomerTokenIdpModel, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<CustomerTokenIdpModel>>;
-    public createCustomerToken(postCustomerTokenIdpModel: PostCustomerTokenIdpModel, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<CustomerTokenIdpModel>>;
-    public createCustomerToken(postCustomerTokenIdpModel: PostCustomerTokenIdpModel, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
-        if (postCustomerTokenIdpModel === null || postCustomerTokenIdpModel === undefined) {
-            throw new Error('Required parameter postCustomerTokenIdpModel was null or undefined when calling createCustomerToken.');
+    public createUser(postUserIdpModel: PostUserIdpModel, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<UserIdpModel>;
+    public createUser(postUserIdpModel: PostUserIdpModel, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<UserIdpModel>>;
+    public createUser(postUserIdpModel: PostUserIdpModel, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<UserIdpModel>>;
+    public createUser(postUserIdpModel: PostUserIdpModel, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+        if (postUserIdpModel === null || postUserIdpModel === undefined) {
+            throw new Error('Required parameter postUserIdpModel was null or undefined when calling createUser.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -156,8 +156,8 @@ export class CustomerTokensService {
             }
         }
 
-        return this.httpClient.post<CustomerTokenIdpModel>(`${this.configuration.basePath}/api/customer_tokens`,
-            postCustomerTokenIdpModel,
+        return this.httpClient.post<UserIdpModel>(`${this.configuration.basePath}/api/users`,
+            postUserIdpModel,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,

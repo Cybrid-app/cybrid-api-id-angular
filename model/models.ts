@@ -6,3 +6,5 @@ export * from './customerToken';
 export * from './postBankApplication';
 export * from './postCustomerToken';
 export * from './postOrganizationApplication';
+export * from './postUser';
+export * from './user';
