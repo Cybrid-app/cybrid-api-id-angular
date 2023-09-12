@@ -8,3 +8,4 @@ export * from './postCustomerToken';
 export * from './postOrganizationApplication';
 export * from './postUser';
 export * from './user';
+export * from './userList';

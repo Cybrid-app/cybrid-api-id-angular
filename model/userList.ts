@@ -9,12 +9,25 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { UserIdpModel } from './user';
 
 
-export interface CustomerTokenIdpModel { 
+export interface UserListIdpModel { 
     /**
-     * The JWT access token for the customer.
+     * The total number of users available.
      */
-    access_token?: string;
+    total: string;
+    /**
+     * The page index.
+     */
+    page: string;
+    /**
+     * The number of records per page returned.
+     */
+    per_page: string;
+    /**
+     * Array of applications
+     */
+    objects: Array<UserIdpModel>;
 }
 

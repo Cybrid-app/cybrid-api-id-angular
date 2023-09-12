@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { BankApplicationsService } from './api/bankApplications.service';
 import { CustomerTokensService } from './api/customerTokens.service';
 import { OrganizationApplicationsService } from './api/organizationApplications.service';
-import { UserService } from './api/user.service';
+import { UsersService } from './api/users.service';
 
 @NgModule({
   imports:      [],
