@@ -9,66 +9,20 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ApplicationWithSecretAllOfIdpModel } from './applicationWithSecretAllOf';
-import { ApplicationIdpModel } from './application';
 
 
-export interface ApplicationWithSecretIdpModel { 
+export interface ErrorResponseIdpModel { 
     /**
-     * Name provided for the OAuth2 application.
+     * Status code for Http Request
      */
-    name: string;
+    status: string;
     /**
-     * The OAuth2 application\'s client ID.
+     * Error message
      */
-    client_id: string;
+    error_message: string;
     /**
-     * List of the scopes granted to the OAuth2 application.
+     * Message code for Error
      */
-    scopes: Array<ApplicationWithSecretIdpModel.ScopesEnum>;
-    /**
-     * ISO8601 datetime the application was created at.
-     */
-    created_at: string;
-    /**
-     * The OAuth2 application\'s secret.
-     */
-    secret: string;
+    message_code: string;
 }
-export namespace ApplicationWithSecretIdpModel {
-    export type ScopesEnum = 'accounts:execute' | 'accounts:read' | 'bank_applications:execute' | 'banks:execute' | 'banks:read' | 'banks:write' | 'customers:execute' | 'customers:read' | 'customers:write' | 'deposit_addresses:execute' | 'deposit_addresses:read' | 'external_bank_accounts:execute' | 'external_bank_accounts:read' | 'external_bank_accounts:write' | 'external_wallets:execute' | 'external_wallets:read' | 'organization_applications:execute' | 'organizations:read' | 'organizations:write' | 'prices:read' | 'quotes:execute' | 'quotes:read' | 'trades:execute' | 'trades:read' | 'transfers:execute' | 'transfers:read' | 'users:execute' | 'users:read' | 'workflows:execute' | 'workflows:read';
-    export const ScopesEnum = {
-        Accountsexecute: 'accounts:execute' as ScopesEnum,
-        Accountsread: 'accounts:read' as ScopesEnum,
-        BankApplicationsexecute: 'bank_applications:execute' as ScopesEnum,
-        Banksexecute: 'banks:execute' as ScopesEnum,
-        Banksread: 'banks:read' as ScopesEnum,
-        Bankswrite: 'banks:write' as ScopesEnum,
-        Customersexecute: 'customers:execute' as ScopesEnum,
-        Customersread: 'customers:read' as ScopesEnum,
-        Customerswrite: 'customers:write' as ScopesEnum,
-        DepositAddressesexecute: 'deposit_addresses:execute' as ScopesEnum,
-        DepositAddressesread: 'deposit_addresses:read' as ScopesEnum,
-        ExternalBankAccountsexecute: 'external_bank_accounts:execute' as ScopesEnum,
-        ExternalBankAccountsread: 'external_bank_accounts:read' as ScopesEnum,
-        ExternalBankAccountswrite: 'external_bank_accounts:write' as ScopesEnum,
-        ExternalWalletsexecute: 'external_wallets:execute' as ScopesEnum,
-        ExternalWalletsread: 'external_wallets:read' as ScopesEnum,
-        OrganizationApplicationsexecute: 'organization_applications:execute' as ScopesEnum,
-        Organizationsread: 'organizations:read' as ScopesEnum,
-        Organizationswrite: 'organizations:write' as ScopesEnum,
-        Pricesread: 'prices:read' as ScopesEnum,
-        Quotesexecute: 'quotes:execute' as ScopesEnum,
-        Quotesread: 'quotes:read' as ScopesEnum,
-        Tradesexecute: 'trades:execute' as ScopesEnum,
-        Tradesread: 'trades:read' as ScopesEnum,
-        Transfersexecute: 'transfers:execute' as ScopesEnum,
-        Transfersread: 'transfers:read' as ScopesEnum,
-        Usersexecute: 'users:execute' as ScopesEnum,
-        Usersread: 'users:read' as ScopesEnum,
-        Workflowsexecute: 'workflows:execute' as ScopesEnum,
-        Workflowsread: 'workflows:read' as ScopesEnum
-    };
-}
-
 
