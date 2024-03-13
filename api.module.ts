@@ -2,6 +2,7 @@ import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core
 import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
+import { ApplicationsService } from './api/applications.service';
 import { BankApplicationsService } from './api/bankApplications.service';
 import { CustomerTokensService } from './api/customerTokens.service';
 import { OrganizationApplicationsService } from './api/organizationApplications.service';

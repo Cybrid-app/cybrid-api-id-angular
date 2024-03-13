@@ -1,3 +1,5 @@
+export * from './applications.service';
+import { ApplicationsService } from './applications.service';
 export * from './bankApplications.service';
 import { BankApplicationsService } from './bankApplications.service';
 export * from './customerTokens.service';
@@ -6,4 +8,4 @@ export * from './organizationApplications.service';
 import { OrganizationApplicationsService } from './organizationApplications.service';
 export * from './users.service';
 import { UsersService } from './users.service';
-export const APIS = [BankApplicationsService, CustomerTokensService, OrganizationApplicationsService, UsersService];
+export const APIS = [ApplicationsService, BankApplicationsService, CustomerTokensService, OrganizationApplicationsService, UsersService];

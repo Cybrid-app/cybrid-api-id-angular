@@ -9,75 +9,152 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ApplicationWithSecretAllOfIdpModel } from './applicationWithSecretAllOf';
-import { ApplicationIdpModel } from './application';
+/* tslint:disable:no-unused-variable member-ordering */
+
+import { Inject, Injectable, Optional }                      from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams,
+         HttpResponse, HttpEvent, HttpParameterCodec, HttpContext 
+        }       from '@angular/common/http';
+import { CustomHttpParameterCodec }                          from '../encoder';
+import { Observable }                                        from 'rxjs';
+
+// @ts-ignore
+import { ErrorResponseIdpModel } from '../model/errorResponse';
+
+// @ts-ignore
+import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
+import { Configuration }                                     from '../configuration';
 
 
-export interface ApplicationWithSecretIdpModel { 
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ApplicationsService {
+
+    protected basePath = 'https://id.sandbox.cybrid.app';
+    public defaultHeaders = new HttpHeaders();
+    public configuration = new Configuration();
+    public encoder: HttpParameterCodec;
+
+    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
+        if (configuration) {
+            this.configuration = configuration;
+        }
+        if (typeof this.configuration.basePath !== 'string') {
+            if (typeof basePath !== 'string') {
+                basePath = this.basePath;
+            }
+            this.configuration.basePath = basePath;
+        }
+        this.encoder = this.configuration.encoder || new CustomHttpParameterCodec();
+    }
+
+
+    private addToHttpParams(httpParams: HttpParams, value: any, key?: string): HttpParams {
+        if (typeof value === "object" && value instanceof Date === false) {
+            httpParams = this.addToHttpParamsRecursive(httpParams, value);
+        } else {
+            httpParams = this.addToHttpParamsRecursive(httpParams, value, key);
+        }
+        return httpParams;
+    }
+
+    private addToHttpParamsRecursive(httpParams: HttpParams, value?: any, key?: string): HttpParams {
+        if (value == null) {
+            return httpParams;
+        }
+
+        if (typeof value === "object") {
+            if (Array.isArray(value)) {
+                (value as any[]).forEach( elem => httpParams = this.addToHttpParamsRecursive(httpParams, elem, key));
+            } else if (value instanceof Date) {
+                if (key != null) {
+                    httpParams = httpParams.append(key, (value as Date).toISOString().substr(0, 10));
+                } else {
+                   throw Error("key may not be null if value is Date");
+                }
+            } else {
+                Object.keys(value).forEach( k => httpParams = this.addToHttpParamsRecursive(
+                    httpParams, value[k], key != null ? `${key}.${k}` : k));
+            }
+        } else if (key != null) {
+            httpParams = httpParams.append(key, value);
+        } else {
+            throw Error("key may not be null if value is not object or array");
+        }
+        return httpParams;
+    }
+
     /**
-     * Name provided for the OAuth2 application.
+     * Discard Application
+     * Discards an application. Application is not deleted, all access tokens are revoked.Required scope: **organization_applications:execute**
+     * @param clientId Identifier for the application.
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
      */
-    name: string;
-    /**
-     * The OAuth2 application\'s client ID.
-     */
-    client_id: string;
-    /**
-     * List of the scopes granted to the OAuth2 application.
-     */
-    scopes: Array<ApplicationWithSecretIdpModel.ScopesEnum>;
-    /**
-     * ISO8601 datetime the record was created at.
-     */
-    created_at: string;
-    /**
-     * ISO8601 datetime the record was last updated at.
-     */
-    updated_at?: string;
-    /**
-     * The OAuth2 application\'s secret.
-     */
-    secret: string;
+    public discardApplication(clientId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any>;
+    public discardApplication(clientId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<any>>;
+    public discardApplication(clientId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<any>>;
+    public discardApplication(clientId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+        if (clientId === null || clientId === undefined) {
+            throw new Error('Required parameter clientId was null or undefined when calling discardApplication.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        let localVarCredential: string | undefined;
+        // authentication (BearerAuth) required
+        localVarCredential = this.configuration.lookupCredential('BearerAuth');
+        if (localVarCredential) {
+            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
+        }
+
+        // authentication (oauth2) required
+        localVarCredential = this.configuration.lookupCredential('oauth2');
+        if (localVarCredential) {
+            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
+        }
+
+        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (localVarHttpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                'application/json'
+            ];
+            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
+        }
+
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        return this.httpClient.delete<any>(`${this.configuration.basePath}/api/applications/${encodeURIComponent(String(clientId))}`,
+            {
+                context: localVarHttpContext,
+                responseType: <any>responseType_,
+                withCredentials: this.configuration.withCredentials,
+                headers: localVarHeaders,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
 }
-export namespace ApplicationWithSecretIdpModel {
-    export type ScopesEnum = 'accounts:execute' | 'accounts:read' | 'bank_applications:execute' | 'banks:execute' | 'banks:read' | 'banks:write' | 'customers:execute' | 'customers:read' | 'customers:write' | 'deposit_addresses:execute' | 'deposit_addresses:read' | 'deposit_bank_accounts:execute' | 'deposit_bank_accounts:read' | 'external_bank_accounts:execute' | 'external_bank_accounts:read' | 'external_bank_accounts:write' | 'external_wallets:execute' | 'external_wallets:read' | 'invoices:execute' | 'invoices:read' | 'invoices:write' | 'organization_applications:execute' | 'organizations:read' | 'organizations:write' | 'prices:read' | 'quotes:execute' | 'quotes:read' | 'trades:execute' | 'trades:read' | 'transfers:execute' | 'transfers:read' | 'users:execute' | 'users:read' | 'workflows:execute' | 'workflows:read';
-    export const ScopesEnum = {
-        Accountsexecute: 'accounts:execute' as ScopesEnum,
-        Accountsread: 'accounts:read' as ScopesEnum,
-        BankApplicationsexecute: 'bank_applications:execute' as ScopesEnum,
-        Banksexecute: 'banks:execute' as ScopesEnum,
-        Banksread: 'banks:read' as ScopesEnum,
-        Bankswrite: 'banks:write' as ScopesEnum,
-        Customersexecute: 'customers:execute' as ScopesEnum,
-        Customersread: 'customers:read' as ScopesEnum,
-        Customerswrite: 'customers:write' as ScopesEnum,
-        DepositAddressesexecute: 'deposit_addresses:execute' as ScopesEnum,
-        DepositAddressesread: 'deposit_addresses:read' as ScopesEnum,
-        DepositBankAccountsexecute: 'deposit_bank_accounts:execute' as ScopesEnum,
-        DepositBankAccountsread: 'deposit_bank_accounts:read' as ScopesEnum,
-        ExternalBankAccountsexecute: 'external_bank_accounts:execute' as ScopesEnum,
-        ExternalBankAccountsread: 'external_bank_accounts:read' as ScopesEnum,
-        ExternalBankAccountswrite: 'external_bank_accounts:write' as ScopesEnum,
-        ExternalWalletsexecute: 'external_wallets:execute' as ScopesEnum,
-        ExternalWalletsread: 'external_wallets:read' as ScopesEnum,
-        Invoicesexecute: 'invoices:execute' as ScopesEnum,
-        Invoicesread: 'invoices:read' as ScopesEnum,
-        Invoiceswrite: 'invoices:write' as ScopesEnum,
-        OrganizationApplicationsexecute: 'organization_applications:execute' as ScopesEnum,
-        Organizationsread: 'organizations:read' as ScopesEnum,
-        Organizationswrite: 'organizations:write' as ScopesEnum,
-        Pricesread: 'prices:read' as ScopesEnum,
-        Quotesexecute: 'quotes:execute' as ScopesEnum,
-        Quotesread: 'quotes:read' as ScopesEnum,
-        Tradesexecute: 'trades:execute' as ScopesEnum,
-        Tradesread: 'trades:read' as ScopesEnum,
-        Transfersexecute: 'transfers:execute' as ScopesEnum,
-        Transfersread: 'transfers:read' as ScopesEnum,
-        Usersexecute: 'users:execute' as ScopesEnum,
-        Usersread: 'users:read' as ScopesEnum,
-        Workflowsexecute: 'workflows:execute' as ScopesEnum,
-        Workflowsread: 'workflows:read' as ScopesEnum
-    };
-}
-
-
