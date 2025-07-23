@@ -11,10 +11,75 @@
  */
 
 
-export interface CustomerTokenIdpModel { 
+export interface PatchUserIdpModel { 
     /**
-     * The JWT access token for the customer.
+     * List of scopes that the user is allowed to request.
      */
-    access_token?: string;
+    allowed_scopes: Set<PatchUserIdpModel.AllowedScopesEnum>;
 }
+export namespace PatchUserIdpModel {
+    export type AllowedScopesEnum = 'organizations:read' | 'organizations:write' | 'organization_applications:execute' | 'banks:read' | 'banks:write' | 'banks:execute' | 'bank_applications:execute' | 'users:read' | 'users:write' | 'users:execute' | 'accounts:read' | 'accounts:execute' | 'counterparties:read' | 'counterparties:pii:read' | 'counterparties:write' | 'counterparties:execute' | 'customers:read' | 'customers:pii:read' | 'customers:write' | 'customers:execute' | 'prices:read' | 'quotes:execute' | 'quotes:read' | 'trades:execute' | 'trades:read' | 'transfers:execute' | 'transfers:read' | 'transfers:write' | 'external_bank_accounts:read' | 'external_bank_accounts:pii:read' | 'external_bank_accounts:write' | 'external_bank_accounts:execute' | 'external_wallets:read' | 'external_wallets:execute' | 'workflows:read' | 'workflows:execute' | 'deposit_addresses:read' | 'deposit_addresses:execute' | 'deposit_bank_accounts:read' | 'deposit_bank_accounts:execute' | 'invoices:read' | 'invoices:write' | 'invoices:execute' | 'subscriptions:read' | 'subscriptions:write' | 'subscriptions:execute' | 'subscription_events:read' | 'subscription_events:execute' | 'identity_verifications:read' | 'identity_verifications:pii:read' | 'identity_verifications:write' | 'identity_verifications:execute' | 'persona_sessions:execute' | 'files:read' | 'files:pii:read' | 'files:execute' | 'openid' | 'profile' | 'email';
+    export const AllowedScopesEnum = {
+        Organizationsread: 'organizations:read' as AllowedScopesEnum,
+        Organizationswrite: 'organizations:write' as AllowedScopesEnum,
+        OrganizationApplicationsexecute: 'organization_applications:execute' as AllowedScopesEnum,
+        Banksread: 'banks:read' as AllowedScopesEnum,
+        Bankswrite: 'banks:write' as AllowedScopesEnum,
+        Banksexecute: 'banks:execute' as AllowedScopesEnum,
+        BankApplicationsexecute: 'bank_applications:execute' as AllowedScopesEnum,
+        Usersread: 'users:read' as AllowedScopesEnum,
+        Userswrite: 'users:write' as AllowedScopesEnum,
+        Usersexecute: 'users:execute' as AllowedScopesEnum,
+        Accountsread: 'accounts:read' as AllowedScopesEnum,
+        Accountsexecute: 'accounts:execute' as AllowedScopesEnum,
+        Counterpartiesread: 'counterparties:read' as AllowedScopesEnum,
+        Counterpartiespiiread: 'counterparties:pii:read' as AllowedScopesEnum,
+        Counterpartieswrite: 'counterparties:write' as AllowedScopesEnum,
+        Counterpartiesexecute: 'counterparties:execute' as AllowedScopesEnum,
+        Customersread: 'customers:read' as AllowedScopesEnum,
+        Customerspiiread: 'customers:pii:read' as AllowedScopesEnum,
+        Customerswrite: 'customers:write' as AllowedScopesEnum,
+        Customersexecute: 'customers:execute' as AllowedScopesEnum,
+        Pricesread: 'prices:read' as AllowedScopesEnum,
+        Quotesexecute: 'quotes:execute' as AllowedScopesEnum,
+        Quotesread: 'quotes:read' as AllowedScopesEnum,
+        Tradesexecute: 'trades:execute' as AllowedScopesEnum,
+        Tradesread: 'trades:read' as AllowedScopesEnum,
+        Transfersexecute: 'transfers:execute' as AllowedScopesEnum,
+        Transfersread: 'transfers:read' as AllowedScopesEnum,
+        Transferswrite: 'transfers:write' as AllowedScopesEnum,
+        ExternalBankAccountsread: 'external_bank_accounts:read' as AllowedScopesEnum,
+        ExternalBankAccountspiiread: 'external_bank_accounts:pii:read' as AllowedScopesEnum,
+        ExternalBankAccountswrite: 'external_bank_accounts:write' as AllowedScopesEnum,
+        ExternalBankAccountsexecute: 'external_bank_accounts:execute' as AllowedScopesEnum,
+        ExternalWalletsread: 'external_wallets:read' as AllowedScopesEnum,
+        ExternalWalletsexecute: 'external_wallets:execute' as AllowedScopesEnum,
+        Workflowsread: 'workflows:read' as AllowedScopesEnum,
+        Workflowsexecute: 'workflows:execute' as AllowedScopesEnum,
+        DepositAddressesread: 'deposit_addresses:read' as AllowedScopesEnum,
+        DepositAddressesexecute: 'deposit_addresses:execute' as AllowedScopesEnum,
+        DepositBankAccountsread: 'deposit_bank_accounts:read' as AllowedScopesEnum,
+        DepositBankAccountsexecute: 'deposit_bank_accounts:execute' as AllowedScopesEnum,
+        Invoicesread: 'invoices:read' as AllowedScopesEnum,
+        Invoiceswrite: 'invoices:write' as AllowedScopesEnum,
+        Invoicesexecute: 'invoices:execute' as AllowedScopesEnum,
+        Subscriptionsread: 'subscriptions:read' as AllowedScopesEnum,
+        Subscriptionswrite: 'subscriptions:write' as AllowedScopesEnum,
+        Subscriptionsexecute: 'subscriptions:execute' as AllowedScopesEnum,
+        SubscriptionEventsread: 'subscription_events:read' as AllowedScopesEnum,
+        SubscriptionEventsexecute: 'subscription_events:execute' as AllowedScopesEnum,
+        IdentityVerificationsread: 'identity_verifications:read' as AllowedScopesEnum,
+        IdentityVerificationspiiread: 'identity_verifications:pii:read' as AllowedScopesEnum,
+        IdentityVerificationswrite: 'identity_verifications:write' as AllowedScopesEnum,
+        IdentityVerificationsexecute: 'identity_verifications:execute' as AllowedScopesEnum,
+        PersonaSessionsexecute: 'persona_sessions:execute' as AllowedScopesEnum,
+        Filesread: 'files:read' as AllowedScopesEnum,
+        Filespiiread: 'files:pii:read' as AllowedScopesEnum,
+        Filesexecute: 'files:execute' as AllowedScopesEnum,
+        Openid: 'openid' as AllowedScopesEnum,
+        Profile: 'profile' as AllowedScopesEnum,
+        Email: 'email' as AllowedScopesEnum
+    };
+}
+
 
