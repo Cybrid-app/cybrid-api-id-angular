@@ -4,6 +4,7 @@ export * from './applicationWithSecretAllOf';
 export * from './applicationWithSecret';
 export * from './customerToken';
 export * from './errorResponse';
+export * from './patchApplication';
 export * from './patchUser';
 export * from './postBankApplication';
 export * from './postCustomerToken';

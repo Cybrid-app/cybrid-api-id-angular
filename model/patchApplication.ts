@@ -11,101 +11,17 @@
  */
 
 
-export interface ApplicationIdpModel { 
+/**
+ * Request body for application update.
+ */
+export interface PatchApplicationIdpModel { 
     /**
-     * Name provided for the OAuth2 application.
+     * Name for the application.
      */
-    name: string;
+    name?: string;
     /**
-     * The OAuth2 application\'s client ID.
+     * List of public IPv4 addresses or CIDR ranges to allowlist for API access. Provide [] to clear the allowlist; omit to leave unchanged.
      */
-    client_id: string;
-    /**
-     * List of the scopes granted to the OAuth2 application.
-     */
-    scopes: Array<ApplicationIdpModel.ScopesEnum>;
-    /**
-     * List of IPv4 addresses or CIDR ranges that are allowlisted for API access.
-     */
-    ip_allowlist: Array<string>;
-    /**
-     * ISO8601 datetime the record was created at.
-     */
-    created_at: string;
-    /**
-     * ISO8601 datetime the record was last updated at.
-     */
-    updated_at?: string;
+    ip_allowlist?: Array<string>;
 }
-export namespace ApplicationIdpModel {
-    export type ScopesEnum = 'accounts:execute' | 'accounts:read' | 'bank_applications:execute' | 'bank_applications:read' | 'bank_applications:write' | 'banks:execute' | 'banks:read' | 'banks:write' | 'counterparties:execute' | 'counterparties:pii:read' | 'counterparties:read' | 'counterparties:write' | 'customers:execute' | 'customers:pii:read' | 'customers:read' | 'customers:write' | 'deposit_addresses:execute' | 'deposit_addresses:read' | 'deposit_bank_accounts:execute' | 'deposit_bank_accounts:read' | 'executions:execute' | 'executions:read' | 'external_bank_accounts:execute' | 'external_bank_accounts:pii:read' | 'external_bank_accounts:read' | 'external_bank_accounts:write' | 'external_wallets:execute' | 'external_wallets:read' | 'files:execute' | 'files:pii:read' | 'files:read' | 'identity_verifications:execute' | 'identity_verifications:pii:read' | 'identity_verifications:read' | 'identity_verifications:write' | 'invoices:execute' | 'invoices:read' | 'invoices:write' | 'organization_applications:execute' | 'organization_applications:read' | 'organization_applications:write' | 'organizations:read' | 'organizations:write' | 'persona_sessions:execute' | 'plans:execute' | 'plans:read' | 'prices:read' | 'quotes:execute' | 'quotes:read' | 'sardine_sessions:execute' | 'subscription_events:execute' | 'subscription_events:read' | 'subscriptions:execute' | 'subscriptions:read' | 'subscriptions:write' | 'trades:execute' | 'trades:read' | 'transfers:execute' | 'transfers:read' | 'transfers:write' | 'users:execute' | 'users:read' | 'users:write' | 'workflows:execute' | 'workflows:read';
-    export const ScopesEnum = {
-        Accountsexecute: 'accounts:execute' as ScopesEnum,
-        Accountsread: 'accounts:read' as ScopesEnum,
-        BankApplicationsexecute: 'bank_applications:execute' as ScopesEnum,
-        BankApplicationsread: 'bank_applications:read' as ScopesEnum,
-        BankApplicationswrite: 'bank_applications:write' as ScopesEnum,
-        Banksexecute: 'banks:execute' as ScopesEnum,
-        Banksread: 'banks:read' as ScopesEnum,
-        Bankswrite: 'banks:write' as ScopesEnum,
-        Counterpartiesexecute: 'counterparties:execute' as ScopesEnum,
-        Counterpartiespiiread: 'counterparties:pii:read' as ScopesEnum,
-        Counterpartiesread: 'counterparties:read' as ScopesEnum,
-        Counterpartieswrite: 'counterparties:write' as ScopesEnum,
-        Customersexecute: 'customers:execute' as ScopesEnum,
-        Customerspiiread: 'customers:pii:read' as ScopesEnum,
-        Customersread: 'customers:read' as ScopesEnum,
-        Customerswrite: 'customers:write' as ScopesEnum,
-        DepositAddressesexecute: 'deposit_addresses:execute' as ScopesEnum,
-        DepositAddressesread: 'deposit_addresses:read' as ScopesEnum,
-        DepositBankAccountsexecute: 'deposit_bank_accounts:execute' as ScopesEnum,
-        DepositBankAccountsread: 'deposit_bank_accounts:read' as ScopesEnum,
-        Executionsexecute: 'executions:execute' as ScopesEnum,
-        Executionsread: 'executions:read' as ScopesEnum,
-        ExternalBankAccountsexecute: 'external_bank_accounts:execute' as ScopesEnum,
-        ExternalBankAccountspiiread: 'external_bank_accounts:pii:read' as ScopesEnum,
-        ExternalBankAccountsread: 'external_bank_accounts:read' as ScopesEnum,
-        ExternalBankAccountswrite: 'external_bank_accounts:write' as ScopesEnum,
-        ExternalWalletsexecute: 'external_wallets:execute' as ScopesEnum,
-        ExternalWalletsread: 'external_wallets:read' as ScopesEnum,
-        Filesexecute: 'files:execute' as ScopesEnum,
-        Filespiiread: 'files:pii:read' as ScopesEnum,
-        Filesread: 'files:read' as ScopesEnum,
-        IdentityVerificationsexecute: 'identity_verifications:execute' as ScopesEnum,
-        IdentityVerificationspiiread: 'identity_verifications:pii:read' as ScopesEnum,
-        IdentityVerificationsread: 'identity_verifications:read' as ScopesEnum,
-        IdentityVerificationswrite: 'identity_verifications:write' as ScopesEnum,
-        Invoicesexecute: 'invoices:execute' as ScopesEnum,
-        Invoicesread: 'invoices:read' as ScopesEnum,
-        Invoiceswrite: 'invoices:write' as ScopesEnum,
-        OrganizationApplicationsexecute: 'organization_applications:execute' as ScopesEnum,
-        OrganizationApplicationsread: 'organization_applications:read' as ScopesEnum,
-        OrganizationApplicationswrite: 'organization_applications:write' as ScopesEnum,
-        Organizationsread: 'organizations:read' as ScopesEnum,
-        Organizationswrite: 'organizations:write' as ScopesEnum,
-        PersonaSessionsexecute: 'persona_sessions:execute' as ScopesEnum,
-        Plansexecute: 'plans:execute' as ScopesEnum,
-        Plansread: 'plans:read' as ScopesEnum,
-        Pricesread: 'prices:read' as ScopesEnum,
-        Quotesexecute: 'quotes:execute' as ScopesEnum,
-        Quotesread: 'quotes:read' as ScopesEnum,
-        SardineSessionsexecute: 'sardine_sessions:execute' as ScopesEnum,
-        SubscriptionEventsexecute: 'subscription_events:execute' as ScopesEnum,
-        SubscriptionEventsread: 'subscription_events:read' as ScopesEnum,
-        Subscriptionsexecute: 'subscriptions:execute' as ScopesEnum,
-        Subscriptionsread: 'subscriptions:read' as ScopesEnum,
-        Subscriptionswrite: 'subscriptions:write' as ScopesEnum,
-        Tradesexecute: 'trades:execute' as ScopesEnum,
-        Tradesread: 'trades:read' as ScopesEnum,
-        Transfersexecute: 'transfers:execute' as ScopesEnum,
-        Transfersread: 'transfers:read' as ScopesEnum,
-        Transferswrite: 'transfers:write' as ScopesEnum,
-        Usersexecute: 'users:execute' as ScopesEnum,
-        Usersread: 'users:read' as ScopesEnum,
-        Userswrite: 'users:write' as ScopesEnum,
-        Workflowsexecute: 'workflows:execute' as ScopesEnum,
-        Workflowsread: 'workflows:read' as ScopesEnum
-    };
-}
-
 
