@@ -11,69 +11,34 @@
  */
 
 
-/**
- * Request body for customer token creation.
- */
-export interface PostCustomerTokenIdpModel { 
+export interface GroupAuthorizationIdpModel { 
     /**
-     * Customer guid the access token is being generated for.
+     * The group authorization\'s guid.
      */
-    customer_guid: string;
+    guid: string;
     /**
-     * List of the scopes requested for the access token.
+     * Guid of the group.
      */
-    scopes: Set<PostCustomerTokenIdpModel.ScopesEnum>;
+    group_guid: string;
+    /**
+     * Guid of the organization linked to the group.
+     */
+    resource_guid: string;
+    /**
+     * Type of the linked resource.
+     */
+    resource_type: string;
+    /**
+     * Scopes the group holds over the organization.
+     */
+    allowed_scopes: Array<string>;
+    /**
+     * ISO8601 datetime the record was created at.
+     */
+    created_at: string;
+    /**
+     * ISO8601 datetime the record was last updated at.
+     */
+    updated_at?: string;
 }
-export namespace PostCustomerTokenIdpModel {
-    export type ScopesEnum = 'counterparties:read' | 'counterparties:pii:read' | 'counterparties:write' | 'counterparties:execute' | 'customers:read' | 'customers:pii:read' | 'customers:write' | 'accounts:read' | 'accounts:write' | 'accounts:execute' | 'prices:read' | 'quotes:read' | 'quotes:execute' | 'trades:read' | 'trades:execute' | 'transfers:read' | 'transfers:write' | 'transfers:execute' | 'external_bank_accounts:read' | 'external_bank_accounts:pii:read' | 'external_bank_accounts:write' | 'external_bank_accounts:execute' | 'external_wallets:read' | 'external_wallets:write' | 'external_wallets:execute' | 'workflows:read' | 'workflows:execute' | 'deposit_addresses:read' | 'deposit_addresses:write' | 'deposit_addresses:execute' | 'deposit_bank_accounts:read' | 'deposit_bank_accounts:write' | 'deposit_bank_accounts:execute' | 'invoices:read' | 'invoices:write' | 'invoices:execute' | 'identity_verifications:read' | 'identity_verifications:pii:read' | 'identity_verifications:write' | 'identity_verifications:execute' | 'persona_sessions:execute' | 'sardine_sessions:execute' | 'plans:execute' | 'plans:read' | 'executions:execute' | 'executions:read';
-    export const ScopesEnum = {
-        Counterpartiesread: 'counterparties:read' as ScopesEnum,
-        Counterpartiespiiread: 'counterparties:pii:read' as ScopesEnum,
-        Counterpartieswrite: 'counterparties:write' as ScopesEnum,
-        Counterpartiesexecute: 'counterparties:execute' as ScopesEnum,
-        Customersread: 'customers:read' as ScopesEnum,
-        Customerspiiread: 'customers:pii:read' as ScopesEnum,
-        Customerswrite: 'customers:write' as ScopesEnum,
-        Accountsread: 'accounts:read' as ScopesEnum,
-        Accountswrite: 'accounts:write' as ScopesEnum,
-        Accountsexecute: 'accounts:execute' as ScopesEnum,
-        Pricesread: 'prices:read' as ScopesEnum,
-        Quotesread: 'quotes:read' as ScopesEnum,
-        Quotesexecute: 'quotes:execute' as ScopesEnum,
-        Tradesread: 'trades:read' as ScopesEnum,
-        Tradesexecute: 'trades:execute' as ScopesEnum,
-        Transfersread: 'transfers:read' as ScopesEnum,
-        Transferswrite: 'transfers:write' as ScopesEnum,
-        Transfersexecute: 'transfers:execute' as ScopesEnum,
-        ExternalBankAccountsread: 'external_bank_accounts:read' as ScopesEnum,
-        ExternalBankAccountspiiread: 'external_bank_accounts:pii:read' as ScopesEnum,
-        ExternalBankAccountswrite: 'external_bank_accounts:write' as ScopesEnum,
-        ExternalBankAccountsexecute: 'external_bank_accounts:execute' as ScopesEnum,
-        ExternalWalletsread: 'external_wallets:read' as ScopesEnum,
-        ExternalWalletswrite: 'external_wallets:write' as ScopesEnum,
-        ExternalWalletsexecute: 'external_wallets:execute' as ScopesEnum,
-        Workflowsread: 'workflows:read' as ScopesEnum,
-        Workflowsexecute: 'workflows:execute' as ScopesEnum,
-        DepositAddressesread: 'deposit_addresses:read' as ScopesEnum,
-        DepositAddresseswrite: 'deposit_addresses:write' as ScopesEnum,
-        DepositAddressesexecute: 'deposit_addresses:execute' as ScopesEnum,
-        DepositBankAccountsread: 'deposit_bank_accounts:read' as ScopesEnum,
-        DepositBankAccountswrite: 'deposit_bank_accounts:write' as ScopesEnum,
-        DepositBankAccountsexecute: 'deposit_bank_accounts:execute' as ScopesEnum,
-        Invoicesread: 'invoices:read' as ScopesEnum,
-        Invoiceswrite: 'invoices:write' as ScopesEnum,
-        Invoicesexecute: 'invoices:execute' as ScopesEnum,
-        IdentityVerificationsread: 'identity_verifications:read' as ScopesEnum,
-        IdentityVerificationspiiread: 'identity_verifications:pii:read' as ScopesEnum,
-        IdentityVerificationswrite: 'identity_verifications:write' as ScopesEnum,
-        IdentityVerificationsexecute: 'identity_verifications:execute' as ScopesEnum,
-        PersonaSessionsexecute: 'persona_sessions:execute' as ScopesEnum,
-        SardineSessionsexecute: 'sardine_sessions:execute' as ScopesEnum,
-        Plansexecute: 'plans:execute' as ScopesEnum,
-        Plansread: 'plans:read' as ScopesEnum,
-        Executionsexecute: 'executions:execute' as ScopesEnum,
-        Executionsread: 'executions:read' as ScopesEnum
-    };
-}
-
 
