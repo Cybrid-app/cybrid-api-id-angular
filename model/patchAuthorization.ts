@@ -11,37 +11,16 @@
  */
 
 
-export interface UserIdpModel { 
+/**
+ * Request body for user authorization update.
+ */
+export interface PatchAuthorizationIdpModel { 
     /**
-     * Auto-generated unique identifier for the user.
+     * List of scopes that the user is allowed to request.
      */
-    guid?: string;
-    /**
-     * The user\'s username.
-     */
-    username?: string;
-    /**
-     * The user\'s email address.
-     */
-    email?: string;
-    /**
-     * The list of scopes that the user is allowed to request.
-     */
-    allowed_scopes?: Set<UserIdpModel.AllowedScopesEnum> | null;
-    /**
-     * The invitation URL for the user. Only present for newly created users.
-     */
-    invite_url?: string | null;
-    /**
-     * ISO8601 datetime the record was created at.
-     */
-    created_at?: string;
-    /**
-     * ISO8601 datetime the record was last updated at.
-     */
-    updated_at?: string;
+    allowed_scopes: Set<PatchAuthorizationIdpModel.AllowedScopesEnum>;
 }
-export namespace UserIdpModel {
+export namespace PatchAuthorizationIdpModel {
     export type AllowedScopesEnum = 'organizations:read' | 'organizations:write' | 'organization_applications:read' | 'organization_applications:write' | 'organization_applications:execute' | 'banks:read' | 'banks:write' | 'banks:execute' | 'bank_applications:read' | 'bank_applications:write' | 'bank_applications:execute' | 'users:read' | 'users:write' | 'users:execute' | 'accounts:read' | 'accounts:write' | 'accounts:execute' | 'counterparties:read' | 'counterparties:pii:read' | 'counterparties:write' | 'counterparties:execute' | 'customers:read' | 'customers:pii:read' | 'customers:write' | 'customers:execute' | 'prices:read' | 'quotes:execute' | 'quotes:read' | 'trades:execute' | 'trades:read' | 'transactions:read' | 'transfers:execute' | 'transfers:read' | 'transfers:write' | 'external_bank_accounts:read' | 'external_bank_accounts:pii:read' | 'transfers:pii:read' | 'external_bank_accounts:write' | 'external_bank_accounts:execute' | 'external_wallets:read' | 'external_wallets:write' | 'external_wallets:execute' | 'workflows:read' | 'workflows:execute' | 'deposit_addresses:read' | 'deposit_addresses:write' | 'deposit_addresses:execute' | 'deposit_bank_accounts:read' | 'deposit_bank_accounts:write' | 'deposit_bank_accounts:execute' | 'invoices:read' | 'invoices:write' | 'invoices:execute' | 'subscriptions:read' | 'subscriptions:write' | 'subscriptions:execute' | 'subscription_events:read' | 'subscription_events:execute' | 'identity_verifications:read' | 'identity_verifications:pii:read' | 'identity_verifications:write' | 'identity_verifications:execute' | 'persona_sessions:execute' | 'sardine_sessions:execute' | 'plans:execute' | 'plans:read' | 'executions:execute' | 'executions:read' | 'files:read' | 'files:pii:read' | 'files:execute' | 'openid' | 'profile' | 'email';
     export const AllowedScopesEnum = {
         Organizationsread: 'organizations:read' as AllowedScopesEnum,

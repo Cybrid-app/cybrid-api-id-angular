@@ -9,116 +9,22 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { AuthorizationIdpModel } from './authorization';
 
 
-export interface UserIdpModel { 
+export interface AuthorizationListIdpModel { 
     /**
-     * Auto-generated unique identifier for the user.
+     * The total number of records available.
      */
-    guid?: string;
+    total: string;
     /**
-     * The user\'s username.
+     * The page index to retrieve.
      */
-    username?: string;
+    page: string;
     /**
-     * The user\'s email address.
+     * The number of entities per page to return.
      */
-    email?: string;
-    /**
-     * The list of scopes that the user is allowed to request.
-     */
-    allowed_scopes?: Set<UserIdpModel.AllowedScopesEnum> | null;
-    /**
-     * The invitation URL for the user. Only present for newly created users.
-     */
-    invite_url?: string | null;
-    /**
-     * ISO8601 datetime the record was created at.
-     */
-    created_at?: string;
-    /**
-     * ISO8601 datetime the record was last updated at.
-     */
-    updated_at?: string;
+    per_page: string;
+    objects: Array<AuthorizationIdpModel>;
 }
-export namespace UserIdpModel {
-    export type AllowedScopesEnum = 'organizations:read' | 'organizations:write' | 'organization_applications:read' | 'organization_applications:write' | 'organization_applications:execute' | 'banks:read' | 'banks:write' | 'banks:execute' | 'bank_applications:read' | 'bank_applications:write' | 'bank_applications:execute' | 'users:read' | 'users:write' | 'users:execute' | 'accounts:read' | 'accounts:write' | 'accounts:execute' | 'counterparties:read' | 'counterparties:pii:read' | 'counterparties:write' | 'counterparties:execute' | 'customers:read' | 'customers:pii:read' | 'customers:write' | 'customers:execute' | 'prices:read' | 'quotes:execute' | 'quotes:read' | 'trades:execute' | 'trades:read' | 'transactions:read' | 'transfers:execute' | 'transfers:read' | 'transfers:write' | 'external_bank_accounts:read' | 'external_bank_accounts:pii:read' | 'transfers:pii:read' | 'external_bank_accounts:write' | 'external_bank_accounts:execute' | 'external_wallets:read' | 'external_wallets:write' | 'external_wallets:execute' | 'workflows:read' | 'workflows:execute' | 'deposit_addresses:read' | 'deposit_addresses:write' | 'deposit_addresses:execute' | 'deposit_bank_accounts:read' | 'deposit_bank_accounts:write' | 'deposit_bank_accounts:execute' | 'invoices:read' | 'invoices:write' | 'invoices:execute' | 'subscriptions:read' | 'subscriptions:write' | 'subscriptions:execute' | 'subscription_events:read' | 'subscription_events:execute' | 'identity_verifications:read' | 'identity_verifications:pii:read' | 'identity_verifications:write' | 'identity_verifications:execute' | 'persona_sessions:execute' | 'sardine_sessions:execute' | 'plans:execute' | 'plans:read' | 'executions:execute' | 'executions:read' | 'files:read' | 'files:pii:read' | 'files:execute' | 'openid' | 'profile' | 'email';
-    export const AllowedScopesEnum = {
-        Organizationsread: 'organizations:read' as AllowedScopesEnum,
-        Organizationswrite: 'organizations:write' as AllowedScopesEnum,
-        OrganizationApplicationsread: 'organization_applications:read' as AllowedScopesEnum,
-        OrganizationApplicationswrite: 'organization_applications:write' as AllowedScopesEnum,
-        OrganizationApplicationsexecute: 'organization_applications:execute' as AllowedScopesEnum,
-        Banksread: 'banks:read' as AllowedScopesEnum,
-        Bankswrite: 'banks:write' as AllowedScopesEnum,
-        Banksexecute: 'banks:execute' as AllowedScopesEnum,
-        BankApplicationsread: 'bank_applications:read' as AllowedScopesEnum,
-        BankApplicationswrite: 'bank_applications:write' as AllowedScopesEnum,
-        BankApplicationsexecute: 'bank_applications:execute' as AllowedScopesEnum,
-        Usersread: 'users:read' as AllowedScopesEnum,
-        Userswrite: 'users:write' as AllowedScopesEnum,
-        Usersexecute: 'users:execute' as AllowedScopesEnum,
-        Accountsread: 'accounts:read' as AllowedScopesEnum,
-        Accountswrite: 'accounts:write' as AllowedScopesEnum,
-        Accountsexecute: 'accounts:execute' as AllowedScopesEnum,
-        Counterpartiesread: 'counterparties:read' as AllowedScopesEnum,
-        Counterpartiespiiread: 'counterparties:pii:read' as AllowedScopesEnum,
-        Counterpartieswrite: 'counterparties:write' as AllowedScopesEnum,
-        Counterpartiesexecute: 'counterparties:execute' as AllowedScopesEnum,
-        Customersread: 'customers:read' as AllowedScopesEnum,
-        Customerspiiread: 'customers:pii:read' as AllowedScopesEnum,
-        Customerswrite: 'customers:write' as AllowedScopesEnum,
-        Customersexecute: 'customers:execute' as AllowedScopesEnum,
-        Pricesread: 'prices:read' as AllowedScopesEnum,
-        Quotesexecute: 'quotes:execute' as AllowedScopesEnum,
-        Quotesread: 'quotes:read' as AllowedScopesEnum,
-        Tradesexecute: 'trades:execute' as AllowedScopesEnum,
-        Tradesread: 'trades:read' as AllowedScopesEnum,
-        Transactionsread: 'transactions:read' as AllowedScopesEnum,
-        Transfersexecute: 'transfers:execute' as AllowedScopesEnum,
-        Transfersread: 'transfers:read' as AllowedScopesEnum,
-        Transferswrite: 'transfers:write' as AllowedScopesEnum,
-        ExternalBankAccountsread: 'external_bank_accounts:read' as AllowedScopesEnum,
-        ExternalBankAccountspiiread: 'external_bank_accounts:pii:read' as AllowedScopesEnum,
-        Transferspiiread: 'transfers:pii:read' as AllowedScopesEnum,
-        ExternalBankAccountswrite: 'external_bank_accounts:write' as AllowedScopesEnum,
-        ExternalBankAccountsexecute: 'external_bank_accounts:execute' as AllowedScopesEnum,
-        ExternalWalletsread: 'external_wallets:read' as AllowedScopesEnum,
-        ExternalWalletswrite: 'external_wallets:write' as AllowedScopesEnum,
-        ExternalWalletsexecute: 'external_wallets:execute' as AllowedScopesEnum,
-        Workflowsread: 'workflows:read' as AllowedScopesEnum,
-        Workflowsexecute: 'workflows:execute' as AllowedScopesEnum,
-        DepositAddressesread: 'deposit_addresses:read' as AllowedScopesEnum,
-        DepositAddresseswrite: 'deposit_addresses:write' as AllowedScopesEnum,
-        DepositAddressesexecute: 'deposit_addresses:execute' as AllowedScopesEnum,
-        DepositBankAccountsread: 'deposit_bank_accounts:read' as AllowedScopesEnum,
-        DepositBankAccountswrite: 'deposit_bank_accounts:write' as AllowedScopesEnum,
-        DepositBankAccountsexecute: 'deposit_bank_accounts:execute' as AllowedScopesEnum,
-        Invoicesread: 'invoices:read' as AllowedScopesEnum,
-        Invoiceswrite: 'invoices:write' as AllowedScopesEnum,
-        Invoicesexecute: 'invoices:execute' as AllowedScopesEnum,
-        Subscriptionsread: 'subscriptions:read' as AllowedScopesEnum,
-        Subscriptionswrite: 'subscriptions:write' as AllowedScopesEnum,
-        Subscriptionsexecute: 'subscriptions:execute' as AllowedScopesEnum,
-        SubscriptionEventsread: 'subscription_events:read' as AllowedScopesEnum,
-        SubscriptionEventsexecute: 'subscription_events:execute' as AllowedScopesEnum,
-        IdentityVerificationsread: 'identity_verifications:read' as AllowedScopesEnum,
-        IdentityVerificationspiiread: 'identity_verifications:pii:read' as AllowedScopesEnum,
-        IdentityVerificationswrite: 'identity_verifications:write' as AllowedScopesEnum,
-        IdentityVerificationsexecute: 'identity_verifications:execute' as AllowedScopesEnum,
-        PersonaSessionsexecute: 'persona_sessions:execute' as AllowedScopesEnum,
-        SardineSessionsexecute: 'sardine_sessions:execute' as AllowedScopesEnum,
-        Plansexecute: 'plans:execute' as AllowedScopesEnum,
-        Plansread: 'plans:read' as AllowedScopesEnum,
-        Executionsexecute: 'executions:execute' as AllowedScopesEnum,
-        Executionsread: 'executions:read' as AllowedScopesEnum,
-        Filesread: 'files:read' as AllowedScopesEnum,
-        Filespiiread: 'files:pii:read' as AllowedScopesEnum,
-        Filesexecute: 'files:execute' as AllowedScopesEnum,
-        Openid: 'openid' as AllowedScopesEnum,
-        Profile: 'profile' as AllowedScopesEnum,
-        Email: 'email' as AllowedScopesEnum
-    };
-}
-
 
