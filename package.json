@@ -1,6 +1,6 @@
 {
   "name": "@cybrid/cybrid-api-id-angular",
-  "version": "0.129.1572",
+  "version": "0.129.1573",
   "description": "View our documentation at https://github.com/Cybrid-app/cybrid-api-id-angular/",
   "author": "Cybrid",
   "keywords": [
@@ -8,6 +8,10 @@
     "@cybrid/cybrid-api-id-angular"
   ],
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cybrid-app/cybrid-api-id-angular.git"
+  },
   "scripts": {
     "build": "ng-packagr -p ng-package.json"
   },
