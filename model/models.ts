@@ -14,6 +14,8 @@ export * from './patchUser';
 export * from './postBankApplication';
 export * from './postCustomerToken';
 export * from './postOrganizationApplication';
+export * from './postThrottleTier';
 export * from './postUser';
+export * from './throttleTier';
 export * from './user';
 export * from './userList';
